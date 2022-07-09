@@ -1,25 +1,63 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+import React from 'react';
+import { createRef, useState } from 'react';
+
+
+// Function Component
+const Item = ({name,price}) =>(
+  <li>{name}, ${price}</li>
+)
+
+
+// Function Component
+const App = props =>{
+  let [items,setItems] = useState([
+    {id:1, name:'Apple', price:0.99},
+    {id:2, name:'Banana', price:0.88}
+  ]);
+
+  let nameRef = createRef();
+  let priceRef = createRef();
+  let add =()=>{
+    let id = items.length +1;
+    let name = nameRef.current.value;
+    let price = priceRef.current.value;
+    setItems([
+      ...items,
+      {id,name,price}
+    ]);
+  }
+  return(
+    <div>
+      <h1>Hello React</h1>
+      <ul>
+        {items.map(i=>(
+          <Item key={i.id} name={i.name} price={i.price}/>
+        ))}
+      </ul>
+      <input type='text' ref={nameRef}/> <br/>
+      <input type='text' ref={priceRef}/> <br/>
+      <button onClick={add}>Add</button>
     </div>
-  );
+  )
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
