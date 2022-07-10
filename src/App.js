@@ -2,8 +2,6 @@
 import React from 'react';
 import { createRef, useState } from 'react';
 
-
-// Function Component
 const Item = ({name,price}) =>(
   <li>{name}, ${price}</li>
 )
