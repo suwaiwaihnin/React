@@ -1,4 +1,4 @@
-どのようなアプリケーションか
+# ReactからSpring BootのAPIを呼び出してCRUD処理するアプリ
 
 # 目標
 
